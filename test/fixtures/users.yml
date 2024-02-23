@@ -1,0 +1,39 @@
+first_user:
+  name: Tara McKenzie
+  guid: <%= SecureRandom.uuid %>
+
+second_user:
+  name: Janae Price
+  guid: <%= SecureRandom.uuid %>
+
+third_user:
+  name: Christiana Torphy
+  guid: <%= SecureRandom.uuid %>
+
+fourth_user:
+  name: Robyn Huels
+  guid: <%= SecureRandom.uuid %>
+
+fifth_user:
+  name: Brad Bauch
+  guid: <%= SecureRandom.uuid %>
+
+sixth_user:
+  name: Dax Walker
+  guid: <%= SecureRandom.uuid %>
+
+seventh_user:
+  name: Lyla Bode
+  guid: <%= SecureRandom.uuid %>
+
+eighth_user:
+  name: Dayne Leffler
+  guid: <%= SecureRandom.uuid %>
+
+ninth_user:
+  name: Savannah Marks
+  guid: <%= SecureRandom.uuid %>
+
+tenth_user:
+  name: Mazie Kerluke
+  guid: <%= SecureRandom.uuid %>
