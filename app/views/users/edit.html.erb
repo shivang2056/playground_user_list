@@ -1,5 +1,7 @@
 <div class="max-w-[60rem] m-auto">
   <%= render "header", user: @user %>
 
-  <%= render "form", user: @user %>
+  <%= turbo_frame_tag "user_#{@user.guid}" do %>
+    <%= render "form", user: @user %>
+  <% end %>
 </div>
