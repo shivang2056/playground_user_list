@@ -1,17 +1,11 @@
-<div class="grid grid-rows-2 gap-3 text-center max-w-[60rem] m-auto">
-  <div class="bg-green-50 grid grid-cols-3">
-    <div>
-      <%= User.count %> Users
-    </div>
-    <div>
-      Search button
-    </div>
-    <div>
+<div class="max-w-[60rem] m-auto">
+  <div class="flex justify-end gap-10 my-20 pb-4 border-b-2 border-gray-200">
+    <div class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br hover:font-semibold focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
       <%= link_to 'New User', '#' %>
     </div>
   </div>
 
-  <div class="bg-blue-50">
-    User list Div
+  <div>
+    <%= render @users %>
   </div>
 </div>
