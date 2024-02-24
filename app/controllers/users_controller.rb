@@ -13,7 +13,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path
+      respond_to do |format|
+        format.html { redirect_to users_path }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
