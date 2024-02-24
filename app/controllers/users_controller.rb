@@ -33,7 +33,10 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
 
-    redirect_to users_path
+    respond_to do |format|
+      format.html { redirect_to users_path }
+      format.turbo_stream
+    end
   end
 
   private
