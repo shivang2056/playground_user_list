@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   scope :ordered, -> { order(id: :desc) }
+  scope :search_by_name, -> (name) { where("name like ?", "%#{name}%") if name.present? }
 
   def assign_guid
     self.guid = SecureRandom.uuid if self.guid.blank?

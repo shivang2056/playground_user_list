@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.ordered
+    @users = User.ordered.search_by_name(search_params[:name])
   end
 
   def new
@@ -46,6 +46,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:name)
   end
 
   def user_params
