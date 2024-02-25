@@ -1,42 +1,50 @@
-<%= form_with model: user, class: "p-4 bg-white text-xl shadow-md rounded-md" do |user_form| %>
+<%= form_with model: user, class: "p-10 bg-white text-md shadow-md rounded-md" do |user_form| %>
   <% if user.errors.any? %>
-    <div class="bg-red-300">
-      <h1><%= user.errors.full_messages.to_sentence.capitalize %></h1>
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">
+      <span class="font-medium"><%= user.errors.full_messages.to_sentence.capitalize %></span>
     </div>
   <% end %>
 
-  <div class="mb-5 flex flex-row">
-    <%= user_form.label :name, class: "basis-1/4" %>
-    <%= user_form.text_field :name, class: "border-2 rounded-lg basis-3/4" %>
+  <div class="mb-5">
+    <%= user_form.label :name, class: "block mb-2 text-xs font-medium" %>
+    <%= user_form.text_field :name, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", required: true %>
   </div>
 
   <%= user_form.fields_for :detail, user.detail do |detail_form| %>
-    <div class="mb-5 flex flex-row">
-      <%= detail_form.label :title, class: "basis-1/4" %>
-      <%= detail_form.text_field :title, class: "border-2 rounded-lg basis-3/4" %>
+    <div class="flex flex-row gap-x-10">
+      <div class="mb-5 basis-1/2">
+        <%= detail_form.label :title, class: "block mb-2 text-xs font-medium" %>
+        <%= detail_form.select :title, options_for_select(UserDetail.titles.map {|key, value| [key.titleize, UserDetail.titles.key(value)]}, user.detail.title), {}, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      </div>
+
+      <div class="mb-5 basis-1/2">
+        <%= detail_form.label :age, class: "block mb-2 text-xs font-medium" %>
+        <%= detail_form.number_field :age, min: 1, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      </div>
     </div>
 
-    <div class="mb-5 flex flex-row">
-      <%= detail_form.label :age, class: "basis-1/4" %>
-      <%= detail_form.text_field :age, class: "border-2 rounded-lg basis-3/4" %>
-    </div>
+    <div class="flex flex-row gap-x-10">
+      <div class="mb-5 basis-1/2">
+        <%= detail_form.label :email, class: "block mb-2 text-xs font-medium" %>
+        <%= detail_form.email_field :email, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+      </div>
 
-    <div class="mb-5 flex flex-row">
-      <%= detail_form.label :email, class: "basis-1/4" %>
-      <%= detail_form.text_field :email, class: "border-2 rounded-lg basis-3/4" %>
-    </div>
-
-    <div class="mb-5 flex flex-row">
-      <%= detail_form.label :phone, class: "basis-1/4" %>
-      <%= detail_form.text_field :phone, class: "border-2 rounded-lg basis-3/4" %>
+      <div class="mb-5 basis-1/2">
+        <%= detail_form.label :phone, class: "block mb-2 text-xs font-medium" %>
+        <%= detail_form.text_field :phone, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", required: true %>
+      </div>
     </div>
   <% end %>
 
   <div class="flex">
-    <%= user_form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    <%= user_form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none" %>
 
-    <div class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br hover:font-semibold focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+    <div class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br hover:font-semibold focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
       <%= link_to 'Cancel', users_path %>
     </div>
   </div>
 <% end %>
+
+
+
+
