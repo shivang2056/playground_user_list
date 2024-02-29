@@ -26,12 +26,12 @@
     <div class="flex flex-row gap-x-10">
       <div class="mb-5 basis-1/2">
         <%= detail_form.label :email, class: "block mb-2 text-xs font-medium" %>
-        <%= detail_form.email_field :email, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        <%= detail_form.email_field :email, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", required: true %>
       </div>
 
       <div class="mb-5 basis-1/2">
         <%= detail_form.label :phone, class: "block mb-2 text-xs font-medium" %>
-        <%= detail_form.text_field :phone, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", required: true %>
+        <%= detail_form.text_field :phone, class: "shadow-sm border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
       </div>
     </div>
   <% end %>

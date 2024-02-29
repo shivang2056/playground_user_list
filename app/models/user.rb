@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one :detail, class_name: 'UserDetail'
   accepts_nested_attributes_for :detail
 
-  validates :name, presence: true
+  validates :name, :detail, presence: true
 
   scope :ordered, -> { order(id: :desc) }
   scope :search_by_name, -> (name) { where("name like ?", "%#{name}%") if name.present? }

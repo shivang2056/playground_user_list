@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.ordered.search_by_name(search_params[:name])
+    @users = User
+              .ordered
+              .search_by_name(search_params[:name])
   end
 
   def new
@@ -53,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, detail_attributes: [:id, :age, :email, :phone, :title])
+    params.require(:user)
+          .permit(:name, detail_attributes: [:id, :age, :email, :phone, :title])
   end
 end
